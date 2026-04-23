@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CareTrack | Honest Medicine Pricing</title>
+    <!-- Modern font: Outfit -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="ambient-light light-1"></div>
+    <div class="ambient-light light-2"></div>
+
+    <div class="container">
+        <header class="glass-panel main-header">
+            <div class="logo">
+                <h1>Care<span>Track</span></h1>
+                <p>Transparent Medicine Info & Pricing</p>
+            </div>
+            <div class="search-container">
+                <input type="text" id="searchInput" placeholder="Search by medicine, generic name, or company...">
+                <button id="searchBtn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                </button>
+            </div>
+            <div class="controls" style="display: flex; gap: 1rem; align-items: center;">
+                <select id="sortSelect" class="styled-select">
+                    <option value="">Sort By...</option>
+                    <option value="price_asc">Price: Low to High</option>
+                    <option value="price_desc">Price: High to Low</option>
+                    <option value="rank">Highest Ranked</option>
+                </select>
+                
+                <div id="authContainer" style="display: flex; gap: 0.5rem; align-items: center;">
+                    <!-- Injected by app.js based on auth state -->
+                </div>
+            </div>
+        </header>
+
+        <main id="medicineList" class="medicine-grid">
+            <!-- Loading state or injected cards will go here -->
+            <div class="loading">Loading medicines...</div>
+        </main>
+    </div>
+
+    <script src="js/auth.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>

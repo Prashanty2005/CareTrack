@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medicine Details | CareTrack</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="ambient-light light-1"></div>
+    <div class="ambient-light light-2"></div>
+
+    <div class="container">
+        <a href="index.html" class="back-btn">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+            Back to Search
+        </a>
+
+        <div class="glass-panel detail-container" style="padding: 2.5rem; margin-top: 1rem;">
+            <div id="loadingDetail" class="loading">Loading medicine details...</div>
+            <div id="detailContent" style="display: none;">
+                <div class="detail-header">
+                    <h1 class="detail-title" id="medName">Medicine Name</h1>
+                    <div class="med-company" id="medCompany" style="font-size: 1.2rem; margin-bottom: 0.5rem;">Company</div>
+                    <div class="med-generic" id="medGeneric" style="font-size: 1rem;">Generic</div>
+                    
+                    <div class="detail-pills">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.5 20.5 19 12a3.5 3.5 0 0 0-5-5l-8.5 8.5a3.5 3.5 0 0 0 5 5z"></path><path d="m14 7.5-6.5 6.5"></path></svg>
+                        <span id="medPills">1 pill a day</span>
+                    </div>
+
+                    <div style="margin-top: 1rem;">
+                        <button id="saveBtn" class="info-btn" style="display: none;">Save to Watchlist</button>
+                    </div>
+                </div>
+
+                <div class="detail-description">
+                    <h3>Description</h3>
+                    <p id="medDesc" style="color: var(--text-secondary); margin-top: 0.5rem;">Description text here.</p>
+                </div>
+
+                <div class="med-pricing">
+                    <div class="price-item mrp">
+                        <span class="price-label">Printed MRP</span>
+                        <span class="price-value" id="medMrp">₹0</span>
+                    </div>
+                    <div class="price-item regulated">
+                        <span class="price-label">Regulated Price</span>
+                        <span class="price-value" id="medRegPrice">₹0</span>
+                    </div>
+                </div>
+
+                <!-- Where to Buy Section -->
+                <div class="where-to-buy-section" style="margin-top: 3rem;">
+                    <h3 style="font-size: 1.3rem; margin-bottom: 1.5rem; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 0.5rem;">Where to Buy Online</h3>
+                    <div id="pharmacyList" style="display: flex; flex-direction: column; gap: 1rem;">
+                        <!-- Pharmacy cards will be injected here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h2 class="section-title">Similar Medicines (<span id="similarGenericLabel"></span>)</h2>
+        <div id="similarList" class="similar-list">
+            <div class="loading">Loading similar medicines...</div>
+        </div>
+    </div>
+
+    <script src="js/auth.js"></script>
+    <script src="js/details.js"></script>
+</body>
+</html>
