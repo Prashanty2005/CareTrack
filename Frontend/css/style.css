@@ -89,6 +89,7 @@ body {
 .logo h1 span {
     background: linear-gradient(to right, #6366f1, #a5b4fc);
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
@@ -330,6 +331,7 @@ body {
     margin-bottom: 0.5rem;
     background: linear-gradient(to right, #fff, #a5b4fc);
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
