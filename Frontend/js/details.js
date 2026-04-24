@@ -1,4 +1,4 @@
-const API_URL = 'http://localhost:5000/api/medicines';
+const API_URL = `${import.meta.env.VITE_API_BASE_URL}/medicines`;
 
 document.addEventListener('DOMContentLoaded', () => {
     // Immediate Route Guard
@@ -72,7 +72,7 @@ async function setupWatchlistButton(medicineId) {
 
     try {
         // Check if it's already in the watchlist
-        const res = await Auth.fetchWithAuth('http://localhost:5000/api/watchlist');
+        const res = await Auth.fetchWithAuth(`${import.meta.env.VITE_API_BASE_URL}/watchlist`);
         if (res.ok) {
             const watchlist = await res.json();
             isSavedInWatchlist = watchlist.some(item => item.id === parseInt(medicineId));
@@ -87,7 +87,7 @@ async function setupWatchlistButton(medicineId) {
         try {
             if (isSavedInWatchlist) {
                 // Remove from watchlist
-                const res = await Auth.fetchWithAuth(`http://localhost:5000/api/watchlist/${medicineId}`, {
+                const res = await Auth.fetchWithAuth(`${import.meta.env.VITE_API_BASE_URL}/watchlist/${medicineId}`, {
                     method: 'DELETE'
                 });
                 if (res.ok) {
@@ -95,7 +95,7 @@ async function setupWatchlistButton(medicineId) {
                 }
             } else {
                 // Add to watchlist
-                const res = await Auth.fetchWithAuth('http://localhost:5000/api/watchlist', {
+                const res = await Auth.fetchWithAuth(`${import.meta.env.VITE_API_BASE_URL}/watchlist`, {
                     method: 'POST',
                     body: JSON.stringify({ medicine_id: medicineId })
                 });

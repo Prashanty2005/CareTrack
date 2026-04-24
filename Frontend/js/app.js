@@ -1,4 +1,4 @@
-const API_URL = 'http://localhost:5000/api/medicines';
+const API_URL = `${import.meta.env.VITE_API_BASE_URL}/medicines`;
 
 document.addEventListener('DOMContentLoaded', () => {
     const listContainer = document.getElementById('medicineList');
@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 e.preventDefault();
                 listContainer.innerHTML = '<div class="loading">Loading your watchlist...</div>';
                 try {
-                    const res = await Auth.fetchWithAuth('http://localhost:5000/api/watchlist');
+                    const res = await Auth.fetchWithAuth(`${import.meta.env.VITE_API_BASE_URL}/watchlist`);
                     if (!res.ok) throw new Error('Failed to fetch watchlist');
                     const data = await res.json();
                     renderMedicines(data);

@@ -41,7 +41,7 @@ let medicinesList = [];
 async function loadMedicines() {
     const tbody = document.getElementById('medicineTableBody');
     try {
-        const res = await fetch('http://localhost:5000/api/medicines');
+        const res = await fetch(`${import.meta.env.VITE_API_BASE_URL}/medicines`);
         if (!res.ok) throw new Error('Failed to fetch');
         medicinesList = await res.json();
         renderTable();
@@ -132,7 +132,7 @@ async function handleFormSubmit(e) {
         description: document.getElementById('medDesc').value
     };
 
-    const url = isEdit ? `http://localhost:5000/api/admin/medicines/${id}` : 'http://localhost:5000/api/admin/medicines';
+    const url = isEdit ? `${import.meta.env.VITE_API_BASE_URL}/admin/medicines/${id}` : `${import.meta.env.VITE_API_BASE_URL}/admin/medicines`;
     const method = isEdit ? 'PUT' : 'POST';
 
     try {
@@ -165,7 +165,7 @@ window.deleteMedicine = async function(id) {
     }
 
     try {
-        const res = await Auth.fetchWithAuth(`http://localhost:5000/api/admin/medicines/${id}`, {
+        const res = await Auth.fetchWithAuth(`${import.meta.env.VITE_API_BASE_URL}/admin/medicines/${id}`, {
             method: 'DELETE'
         });
 
