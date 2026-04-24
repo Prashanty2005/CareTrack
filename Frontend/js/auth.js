@@ -32,10 +32,10 @@ const Auth = {
         
         const response = await fetch(url, { ...options, headers });
         
-        if (response.status === 401) {
+        if (response.status === 401 || response.status === 403) {
             this.clearToken();
-            // Optional: redirect to login or show modal
-            console.warn('Unauthorized. Token cleared.');
+            alert('Your session has expired or you are unauthorized. Please log in again.');
+            window.location.href = 'login.html';
         }
         
         return response;

@@ -117,6 +117,17 @@ document.addEventListener('DOMContentLoaded', () => {
     // Event listeners
     searchBtn.addEventListener('click', fetchMedicines);
     
+    // Intercept "View Details" clicks
+    listContainer.addEventListener('click', (e) => {
+        if (e.target.tagName === 'A' && e.target.classList.contains('info-btn') && e.target.innerText === 'View Details') {
+            if (!Auth.isAuthenticated()) {
+                e.preventDefault();
+                alert('Please log in to view medicine details and prices.');
+                window.location.href = 'login.html';
+            }
+        }
+    });
+    
     searchInput.addEventListener('input', () => {
         clearTimeout(debounceTimer);
         debounceTimer = setTimeout(fetchMedicines, 500);

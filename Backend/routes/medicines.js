@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const pool = require('../config/db');
+const verifyToken = require('../middleware/auth');
 
 // Get all medicines (optionally with search and sort parameters)
 router.get('/', async (req, res) => {
@@ -34,7 +35,7 @@ router.get('/', async (req, res) => {
 });
 
 // Get medicine by ID
-router.get('/:id', async (req, res) => {
+router.get('/:id', verifyToken, async (req, res) => {
     try {
         const { id } = req.params;
         const [rows] = await pool.execute('SELECT * FROM medicines WHERE id = ?', [id]);

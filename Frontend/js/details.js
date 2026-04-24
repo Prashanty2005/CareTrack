@@ -1,6 +1,13 @@
 const API_URL = 'http://localhost:5000/api/medicines';
 
 document.addEventListener('DOMContentLoaded', () => {
+    // Immediate Route Guard
+    if (!Auth.isAuthenticated()) {
+        alert('Please log in to view medicine details and prices.');
+        window.location.href = 'login.html';
+        return;
+    }
+
     const params = new URLSearchParams(window.location.search);
     const id = params.get('id');
 
@@ -15,7 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 async function fetchMedicineDetail(id) {
     try {
-        const res = await fetch(`${API_URL}/${id}`);
+        const res = await Auth.fetchWithAuth(`${API_URL}/${id}`);
         if (!res.ok) throw new Error('Failed to fetch detail');
         const med = await res.json();
 
