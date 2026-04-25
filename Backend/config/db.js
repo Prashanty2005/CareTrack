@@ -16,7 +16,7 @@ const dbConfig = {
 // Enable SSL if required (e.g., for AWS RDS)
 if (process.env.DB_SSL === 'true') {
     dbConfig.ssl = {
-        rejectUnauthorized: true // You may need to provide a ca: fs.readFileSync('path-to-cert.pem') depending on the setup
+        rejectUnauthorized: false // Set to false to allow AWS RDS self-signed certificates
     };
 }
 
