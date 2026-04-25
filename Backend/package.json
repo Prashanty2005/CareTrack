@@ -6,7 +6,7 @@
     "start": "node index.js",
     "start:prod": "pm2 start ecosystem.config.js --env production",
     "stop": "pm2 stop ecosystem.config.js",
-    "dev": "node --watch index.js",
+    "dev": "nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
